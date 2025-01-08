@@ -1,0 +1,17 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+   name: nginx-service
+   namespace: nginx
+   labels:
+     owner: cloudEnthusiastic
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
