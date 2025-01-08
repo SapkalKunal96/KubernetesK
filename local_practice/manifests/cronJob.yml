@@ -1,0 +1,29 @@
+---
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: cron-job
+  namespace: demo
+  labels:
+    owner: cloudEnthusiastic
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: cron-job
+          labels:
+            name: cron-job
+        spec:
+         containers:
+            - name: chron-job
+              image: busybox
+              command:
+               - sh
+               - -c
+               - >
+                  echo "Backup is running at every 1 minute" && 
+                  echo "oops it started again";
+         restartPolicy: OnFailure
+

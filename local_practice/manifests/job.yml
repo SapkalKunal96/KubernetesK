@@ -1,0 +1,31 @@
+---
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: demo-job
+  namespace: demo
+  labels:
+    owner: cloudEnthusiastic
+spec:
+  completions: 2 #how many times you want to complete?
+  parallelism: 2 #At a time how many times ?
+  template:
+    metadata:
+      name: demo-job
+      labels:
+        name: backup
+    spec:
+      containers:
+        - name: demo-job
+          image: busybox
+          command:
+            - sh
+            - -c
+            - >
+             echo "Backup started";
+             echo "Backup running";
+             sleep 60;
+             echo "Backup completed";
+      restartPolicy: Never
+            
+

@@ -1,0 +1,42 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mysql-deployment
+  namespace: mysql
+  labels:
+    app: mysql
+    owner: cloudEnthusiastic
+    env: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      name: mysqle-deployment
+      labels:
+        app: mysql
+        env: production
+    spec:
+
+      containers:
+        - name: mysql-deployment
+          image: mysql
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_ROOT_PASSWORD
+
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap
+                  key: MYSQL_DATABASE
+                  
+

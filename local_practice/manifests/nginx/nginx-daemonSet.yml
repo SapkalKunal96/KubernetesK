@@ -1,0 +1,28 @@
+---
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  namespace: nginx
+  name: nginx-daemonset
+  labels:
+    owner: cloudEnthusiastic
+    app: nginx
+    env: production
+spec:
+  selector:
+    matchLabels:
+      env: production
+  template:
+    metadata:
+      name: nginx-daemonset
+      labels:
+        env: production
+        app: nginx
+    spec:
+      containers:
+        - name: nginx-daemonset
+          image: nginx
+          ports:
+            - containerPort: 80
+
+

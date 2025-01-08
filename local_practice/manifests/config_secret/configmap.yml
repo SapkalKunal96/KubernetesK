@@ -1,0 +1,10 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mysql-configmap
+  namespace: mysql
+  labels:
+    owner: cloudEnthusiastic
+data:
+  MYSQL_DATABASE: cloudenthusiastic
