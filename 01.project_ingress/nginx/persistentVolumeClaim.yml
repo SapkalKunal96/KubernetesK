@@ -12,5 +12,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 500M
+      storage: 1Gi
   volumeName: nginx-pv

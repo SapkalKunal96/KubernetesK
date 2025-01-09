@@ -1,0 +1,28 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: notes-app-deployment
+  namespace: notes-app
+  labels:
+    owner: cloudEnthusiastic
+    app: notes-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notes-app
+  template:
+    metadata:
+      labels:
+        app: notes-app
+        name: notes-app
+    spec:
+      containers:
+        - name: notes-app
+          image: cloudenthusiastic/notes-app
+          ports:
+            - containerPort: 8000
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: cloudenthusiastic-registry-secret

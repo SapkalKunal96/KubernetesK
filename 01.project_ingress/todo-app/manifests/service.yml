@@ -1,0 +1,17 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: todo-app-service
+  namespace: todo-app
+  labels:
+    owner: cloudEnthusiastic
+    app: todo-app
+spec:
+  type: ClusterIP
+  selector:
+    app: todo-app
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 80

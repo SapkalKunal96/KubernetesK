@@ -1,0 +1,18 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: notes-app-service
+  namespace: notes-app
+  labels:
+    owner: cloudEnthusiastic
+    app: notes-app
+spec:
+  type: ClusterIP
+  selector:
+    app: notes-app
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+
