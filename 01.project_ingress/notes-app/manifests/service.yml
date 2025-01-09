@@ -3,7 +3,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: notes-app-service
-  namespace: notes-app
+  namespace: nginx
   labels:
     owner: cloudEnthusiastic
     app: notes-app
